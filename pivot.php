@@ -38,7 +38,18 @@ $ol=$html2->find('ol')[4];
 
 foreach($ol->find('a') as $e)
 {
-    echo($e->href." <br>");
+    echo("<strong>".$e->href."</strong> <br>");
+
+    $html3=file_get_html($e->href,false,$context);
+    foreach($html3->find('.lcp_catlist') as $e2)
+    {
+        foreach($e2->find('a') as $e3)
+        {
+            echo("  ");
+            echo $e3->href." <br>";
+        }
+
+    }
 }
 
 ?>
